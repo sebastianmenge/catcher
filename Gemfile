@@ -15,6 +15,8 @@ end
 gem 'jquery-rails'
 gem 'ember-rails'
 gem "mongoid", "~> 3.0.0"
+gem 'omniauth-facebook'
+gem 'nokogiri'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
