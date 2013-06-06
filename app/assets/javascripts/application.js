@@ -1,10 +1,11 @@
 //= require jquery
 //= require jquery_ujs
+//= require underscore
 //= require handlebars
 //= require ember
 //= require ember-data
 //= require_self
-//= require reedio
+//= require init
+//= require catcher
 App = Ember.Application.create();
-
 //= require_tree .

@@ -1,4 +1,4 @@
-Reedio::Application.routes.draw do
+Catcher::Application.routes.draw do
   root :to => 'static#index'
 
   namespace :api do

@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Reedio::Application.load_tasks
+Catcher::Application.load_tasks

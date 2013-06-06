@@ -15,7 +15,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Reedio
+module Catcher
   class Application < Rails::Application
     Mongoid.logger.level = Logger::DEBUG
     # Settings in config/environments/* take precedence over those specified here.
