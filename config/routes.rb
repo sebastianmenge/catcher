@@ -3,7 +3,7 @@ Catcher::Application.routes.draw do
 
   namespace :api do
     match '/logout' => 'sessions#destroy'
-    resource  :session, only: [:create, :destroy]
+    resource  :sessions, only: [:create, :destroy]
     resources :users
     resources :entries, except: [:show] do
     end

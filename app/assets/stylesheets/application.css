@@ -1,4 +1,5 @@
 @import 'plugins/normalize';
+@import 'globals/buttons';
 @import 'structure';
 @import 'sections/links';
 @import 'sections/login';

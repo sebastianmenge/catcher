@@ -2,6 +2,7 @@ window.fbAsyncInit = ()->
   App.__container__.lookup('controller:facebookSession').FBinit()
 
 App.FacebookSessionController = Ember.ObjectController.extend
+  needs: ['sessions', 'currentUser']
   initialized: false
   isConnected: false
   initData:
@@ -30,7 +31,7 @@ App.FacebookSessionController = Ember.ObjectController.extend
     FB.Event.subscribe 'auth.authResponseChange', (response)=>
       @isConnected = response.status == "connected"
       @authData = @parseResponse(response.authResponse)
-      @fastFetch()
+      @longFetch()
       @refreshToken()
 
   parseResponse: (data)->
@@ -38,7 +39,6 @@ App.FacebookSessionController = Ember.ObjectController.extend
     oauth_token:            data.accessToken
     oauth_token_expires_at: data.expiresIn
     oauth_token_expires_in: data.expiresIn
-    funnel:                 @getFunnel()
     uid:                    data.userID
     expiresIn:              data.expiresIn
 
@@ -52,22 +52,8 @@ App.FacebookSessionController = Ember.ObjectController.extend
   getUser: ->
     FB.api '/me', (response) =>
       @user_details = response
-      # we're overriding the facebook locale
-      # with the user's current browser locale
-      @user_details.locale = MerkinConfig.lang
-
       @setSession()
 
   setSession: ->
-
-      @authData.user_details = @user_details
-      @authData.country      = @country_name
-
-      App.session = App.Session.createRecord
-        payload_data: @authData
-        controller: @
-        uid: @authData.uid
-      @set 'session', App.session
-      App.session.commit()
-
-  performLongFetch: -> @longFetch()
+    ctrl = @get('controllers.sessions')
+    ctrl.createSession(@authData, @user_details)
