@@ -2,7 +2,7 @@ window.fbAsyncInit = ()->
   App.__container__.lookup('controller:facebookSession').FBinit()
 
 App.FacebookSessionController = Ember.ObjectController.extend
-  needs: ['sessions', 'currentUser']
+  needs: ['session']
   initialized: false
   isConnected: false
   initData:
@@ -55,5 +55,5 @@ App.FacebookSessionController = Ember.ObjectController.extend
       @setSession()
 
   setSession: ->
-    ctrl = @get('controllers.sessions')
-    ctrl.createSession(@authData, @user_details)
+    ctrl = @get('controllers.session')
+    ctrl.create(@authData, @user_details)

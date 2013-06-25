@@ -13,11 +13,9 @@ module Api
         session: {
           oauth_token: data.oauth_token,
           user_id: data.id,
-          user: {
-            id: data.id,
-            first_name: data.first_name,
-            last_name: data.last_name
-          }
+          first_name: data.first_name,
+          last_name: data.last_name,
+          email: data.email
         }
       }
     end

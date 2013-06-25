@@ -1,10 +1,10 @@
 App.LoginController = Ember.ObjectController.extend
-  needs: ['facebookSession', 'sessions']
+  needs: ['session']
 
   checkStatus: (->
-    @continue() if App.Session.get('created')
-    console.log App.Session.get('created')
-  ).observes('controllers.session.created')
+    created = @get('controllers.session.content.created')
+    @continue() if created
+  ).observes('controllers.session.content.created')
 
   continue: ->
-    App.router.transitionTo('links')
+    @transitionToRoute('links')

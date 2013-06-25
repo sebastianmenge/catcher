@@ -1,6 +1,9 @@
 <nav class="main-nav">
   <div class="content">
     <div class="logo"></div>
+    {{#if controllers.currentUser}}
+      {{controllers.currentUser.content}}
+    {{/if}}
   </div>
 </nav>
 {{yield}}

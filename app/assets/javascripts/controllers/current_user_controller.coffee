@@ -1,1 +1,2 @@
-App.CurrentUserController = Ember.ObjectController.extend()
+App.CurrentUserController = Ember.ObjectController.extend
+  content: 'mike'
