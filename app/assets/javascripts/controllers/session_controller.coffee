@@ -2,6 +2,7 @@ App.SessionController = Ember.ObjectController.extend
   needs: ['currentUser']
   create: (fb, user)->
     @transaction = @get('store').transaction();
+
     record = @transaction.createRecord App.Session,
       first_name: user.first_name
       last_name: user.last_name

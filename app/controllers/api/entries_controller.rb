@@ -2,14 +2,15 @@ module Api
   class EntriesController < BaseController
     require 'nokogiri'
     require 'open-uri'
+    require 'uri'
 
     def extract_props
       url = params[:url]
       doc = Nokogiri::HTML(open(url))
       render json: { properties: {
-        title: title(doc).first,
-        image: image(doc).first,
-        description: desc(doc).first,
+        title: title(doc),
+        image: image(doc, url),
+        description: desc(doc),
         url: url,
         favicon: favicon(url)
         }
@@ -25,33 +26,27 @@ module Api
     end
 
     def title(doc)
-      fb = "//meta[@property='og:title']/@content"
-      p = '//title/text()'
-      if parse_prop(doc, fb).first.present?
-        parse_prop(doc, fb)
-      else
-        parse_prop(doc, p)
-      end
+      fb_og = parse_prop(doc, "//meta[@property='og:title']/@content")
+      tag = parse_prop(doc, '//title/text()')
+      fb_og.first.present? ? fb_og.first : tag.first
     end
 
-    def image(doc)
-      fb = "//meta[@property='og:image']/@content"
-      p = '//img/@src'
-      if parse_prop(doc, fb).first.present?
-        parse_prop(doc, fb)
-      else
-        parse_prop(doc, p)
-      end
+    def image(doc, url)
+      fb_og = parse_prop(doc, "//meta[@property='og:image']/@content")
+      tag = parse_prop(doc, '//img/@src')
+      img_url = build_img_url(url, tag)
+      fb_og.first.present? ? fb_og.first : img_url
+    end
+
+    def build_img_url(url, tag)
+      rootUrl = URI::join(url, "/").to_s.gsub(/\/$/,'')
+      img = tag.first.start_with?('https', 'http') ? tag.first : "#{rootUrl}#{tag.first}"
     end
 
     def desc(doc)
-      fb = "//meta[@property='og:description']/@content"
-      p = '//p/text()'
-      if parse_prop(doc, fb).first.present?
-        parse_prop(doc, fb)
-      else
-        parse_prop(doc, p)
-      end
+      fb_og = parse_prop(doc, "//meta[@property='og:description']/@content")
+      tag = parse_prop(doc, '//p/text()')
+      fb_og.first.present? ? fb_og.first : tag.first
     end
 
     def favicon(url)
