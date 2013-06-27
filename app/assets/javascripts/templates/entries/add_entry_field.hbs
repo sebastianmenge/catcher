@@ -1,0 +1,10 @@
+{{view App.AddEntryFieldView}}
+{{#with controller.controllers.urlExtraction.content}}
+  <hr>
+  <h1>{{title}}</h1>
+  <p>{{description}}</p>
+  <img {{bindAttr src="favicon"}} alt="">
+  <img {{bindAttr src="image"}} alt="">
+  <p>{{url}}</p>
+  <hr>
+{{/with}}

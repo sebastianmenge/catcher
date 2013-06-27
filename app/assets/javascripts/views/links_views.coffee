@@ -1,3 +1,3 @@
-App.LinksView = Ember.View.extend
+App.EntriesView = Ember.View.extend
   layoutName: 'layouts/application_layout'
-  templateName: 'links/index'
+  templateName: 'entries/index'

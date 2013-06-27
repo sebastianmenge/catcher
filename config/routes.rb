@@ -7,7 +7,8 @@ Catcher::Application.routes.draw do
     resources :users
     resources :entries, except: [:show] do
     end
-    post "/url_data" => "entries#extract_props"
+    resources :url_extractions, only: [:show]
+    # get "/url_extractions/:id" => "urlExtractions#extract_props"
 
     match "*path", :to => "base#routing_error" unless Rails.env.test?
   end

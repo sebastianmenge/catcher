@@ -1,5 +1,5 @@
 App.Router.map (match)->
-  @resource 'links', ->
+  @resource 'entries', ->
   @route 'login'
   @route 'landing_page'
 

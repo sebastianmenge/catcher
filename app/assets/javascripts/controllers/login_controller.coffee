@@ -7,4 +7,4 @@ App.LoginController = Ember.ObjectController.extend
   ).observes('controllers.session.content.created')
 
   continue: ->
-    @transitionToRoute('links')
+    @transitionToRoute('entries')

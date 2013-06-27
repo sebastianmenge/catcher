@@ -14,11 +14,7 @@ class User
   validates_uniqueness_of :email
 
   def self.create_user(data)
-    user = User.create(data)
-    if user.save
-      session[:user_id] = user.id
-    end
-    user
+    User.create(data)
   end
 
   def self.find_by_facebook_uid(uid)

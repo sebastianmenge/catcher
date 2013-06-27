@@ -22,7 +22,7 @@ App.SessionController = Ember.ObjectController.extend
     @transaction = null
 
     record.on 'didCreate', (e)=>
-      # @setUser(record)
+      @setUser(record)
       @set('created', true)
 
   setUser: (user)->
