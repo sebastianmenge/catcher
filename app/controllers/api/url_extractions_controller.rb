@@ -34,8 +34,8 @@ module Api
 
     def image(doc, url)
       fb_og = parse_prop(doc, "//meta[@property='og:image']/@content")
-      tag = parse_prop(doc, '//img/@src')
-      img_url = build_img_url(url, tag)
+      tag = parse_prop(doc, '//img/@src').sample(1)
+      img_url = build_img_url(url, tag) if tag.present?
       fb_og.first.present? ? fb_og.first : img_url
     end
 

@@ -1,5 +1,8 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
+  has_many :groups
+
   field :first_name, type: String
   field :last_name, type: String
   field :facebook_uid, type: Integer
@@ -12,6 +15,7 @@ class User
   field :signed_request, type: String
 
   validates_uniqueness_of :email
+  validates_presence_of :email
 
   def self.create_user(data)
     User.create(data)

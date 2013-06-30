@@ -1,8 +1,8 @@
-App.AddEntryView = Ember.View.extend
-  classNames: ['add-entry']
-  templateName: 'entries/add_entry_field'
+App.AddLinkView = Ember.View.extend
+  classNames: ['add-link']
+  templateName: 'groups/add_link_field'
 
-App.AddEntryFieldView = Ember.TextField.extend
+App.AddLinkFieldView = Ember.TextField.extend
   didInsertElement: ->
     @.$().bind 'paste', (e)->
       setTimeout ->

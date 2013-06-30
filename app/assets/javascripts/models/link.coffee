@@ -1,0 +1,7 @@
+App.Link = DS.Model.extend
+  url:            DS.attr('string')
+  title:          DS.attr('string')
+  image:          DS.attr('string')
+  favicon:        DS.attr('string')
+  description:    DS.attr('string')
+  group:           DS.belongsTo('App.Group')
