@@ -1,0 +1,47 @@
+@mixin gradient($start, $end){
+  background: -webkit-gradient(linear, left top, left bottom, from($start), to($end));
+  background: -moz-linear-gradient(top,  $start,  $end);
+  background: linear-gradient(top,  $start,  $end);
+}
+
+@mixin animate($property: opacity, $time: 0.3s, $function: ease-in-out) {
+  @include transition-property($property);
+  @include transition-duration($time);
+  @include transition-timing-function($function);
+}
+
+
+// Border Radius
+@mixin border-radius($corners, $radius) {
+  @if  $corners == 'all' {
+    border-radius: $radius;
+  }
+  @else if  $corners == 'top-left' {
+    border-top-left-radius: $radius;
+  }
+  @else if  $corners == 'top-right' {
+    border-top-right-radius: $radius;
+  }
+  @else if  $corners == 'bottom-left' {
+    border-bottom-left-radius: $radius;
+  }
+  @else if  $corners == 'bottom-right' {
+    border-bottom-right-radius: $radius;
+  }
+  @else if  $corners == 'top' {
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+  }
+  @else if  $corners == 'right' {
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
+  @else if  $corners == 'bottom' {
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
+  @else if  $corners == 'left' {
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+  }
+}

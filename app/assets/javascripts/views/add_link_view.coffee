@@ -1,6 +1,6 @@
-App.AddLinkView = Ember.View.extend
-  classNames: ['add-link']
-  templateName: 'groups/add_link_field'
+App.AddSearchLinkView = Ember.View.extend
+  classNames: ['add-search-link']
+  templateName: 'groups/add_search_link_field'
 
 App.AddLinkFieldView = Ember.TextField.extend
   didInsertElement: ->

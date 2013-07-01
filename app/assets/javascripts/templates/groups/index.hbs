@@ -1,11 +1,12 @@
+<section class="add-search-section">
+  {{view App.AddSearchLinkView}}
+</section>
+
 <section class="links-section">
   <div class="content">
-    <ul>
-      {{collection contentBinding=controller itemViewClass='App.GroupListView'}}
-    </ul>
-    <hr>
-      <p>jasdkjhjkh</p>
+    <div class="links-wrapper">
+      {{collection class='groups' tagName='ul'contentBinding=controller itemViewClass='App.GroupListView'}}
       {{outlet}}
-    <hr>
+    </div>
   </div>
 </section>

@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: image-url('body_bg.gif');
+  // background-size: 200px 200px;
+  font-family: 'source-sans-pro';
+  font-weight: 400;
+  // background:#f0f0f0;
+}
+
+div.clear {
+  clear: both;
+}
+
+nav, footer {
+  max-width: 100%;
+  padding: 0 40px;
+  div.content {
+    margin: auto;
+  }
+}
+
+nav.main-nav {
+  background:#333;
+  height: 45px;
+  .content {
+    padding: 10px 0 0;
+  }
+  .logo {
+    background:image-url('catcher_logo.png') no-repeat;
+    background-size: 88px;
+    width: 100px;
+    height: 28px;
+  }
+}

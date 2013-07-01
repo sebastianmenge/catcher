@@ -6,6 +6,8 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :assets do
+  gem 'sass',   '~> 3.2.8'
+  gem 'sass-rails',   '~> 3.2.6'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
