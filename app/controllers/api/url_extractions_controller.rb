@@ -6,7 +6,7 @@ module Api
     require 'uri'
 
     def show
-      url = params[:id].split(" ").join(".")
+      url = params[:url_extraction.split(" ").join(".")
       doc = Nokogiri::HTML(open(url))
       render json: { url_extraction: {
         title: title(doc),

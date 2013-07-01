@@ -1,6 +1,9 @@
 App.GroupsRoute = Ember.Route.extend
   model: ->
-    App.Group.find()
+    App.Group.find({})
+  redirect: (model)->
+    firstItem = model.get('firstObject')
+    @replaceWith('groups.links', firstItem)
 
 App.GroupsLinksRoute = Ember.Route.extend
   model: (param) ->
