@@ -1,6 +1,7 @@
 App.Router.map (match)->
-  @resource 'groups', ->
-    @resource 'groups.links', path: ':group_id/links'
+  @resource 'context', path: "/context/:context_id", ->
+    @resource 'groups', path: '/groups/:group_id', ->
+      @route 'links'
   @route 'login'
   @route 'landing_page'
 

@@ -2,9 +2,9 @@
 
 # Add new inflection rules using the following format
 # (all these examples are active by default):
-# ActiveSupport::Inflector.inflections do |inflect|
-#   inflect.irregular 'entry', 'entries'
-# end
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular 'context', 'contexts'
+end
 #
 # These inflection rules are supported but not enabled by default:
 # ActiveSupport::Inflector.inflections do |inflect|

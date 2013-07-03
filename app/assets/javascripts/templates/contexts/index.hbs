@@ -1,0 +1,12 @@
+<section class="add-search-section">
+  {{view App.AddSearchLinkView}}
+
+  <div class="contexts-list">
+    <ul>
+      {{#each controller}}
+        <li>{{#linkTo 'context' this}}{{name}}{{/linkTo}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</section>
+

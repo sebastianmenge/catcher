@@ -1,4 +1,12 @@
+.contexts-list {
+  width: 185px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 .add-search-section {
+  position: relative;
   margin-bottom: 50px;
   min-width: 1100px;
   .add-search-link {

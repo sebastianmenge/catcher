@@ -2,7 +2,7 @@ module Api
   class GroupsController < BaseController
 
     def index
-      @groups = current_user.groups
+      @groups = Group.find(params[:ids])
       render json: @groups
     end
 
