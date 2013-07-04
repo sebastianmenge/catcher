@@ -4,15 +4,18 @@ module Api
     require 'nokogiri'
     require 'open-uri'
     require 'uri'
+    require 'pismo'
 
     def show
-      url = params[:url_extraction.split(" ").join(".")
-      doc = Nokogiri::HTML(open(url))
+      url = params[:id].split(" ").join(".")
+      # doc = Nokogiri::HTML(open(url))
+      # doc = Pismo::Document.new(url)
+      doc = MetaInspector.new(url)
       render json: { url_extraction: {
-        title: title(doc),
-        image: image(doc, url),
-        description: desc(doc),
-        url: url,
+        title: doc.title,
+        image: doc.image,
+        description: doc.description,
+        url: doc.host,
         favicon: favicon(url)
         }
       }

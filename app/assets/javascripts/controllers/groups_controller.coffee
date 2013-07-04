@@ -1,4 +1,3 @@
-App.GroupsController = Ember.ArrayController.extend
-  needs: ['urlExtraction']
+App.ContextsGroupsIndexController = Ember.ObjectController.extend()
 
 App.GroupsLinksController = Ember.ObjectController.extend()

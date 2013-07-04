@@ -1,6 +1,6 @@
 class ContextSerializer < ActiveModel::Serializer
   attributes :id, :name
-  embed :ids
+  embed :ids, include: true
 
   has_many :groups
 end

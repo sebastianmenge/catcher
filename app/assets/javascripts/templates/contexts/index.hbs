@@ -2,11 +2,13 @@
   {{view App.AddSearchLinkView}}
 
   <div class="contexts-list">
+    {{controller.name}}
     <ul>
       {{#each controller}}
-        <li>{{#linkTo 'context' this}}{{name}}{{/linkTo}}</li>
+        <li>{{#linkTo 'contexts.groups' this}}{{name}}{{/linkTo}}</li>
       {{/each}}
     </ul>
   </div>
 </section>
+{{outlet}}
 

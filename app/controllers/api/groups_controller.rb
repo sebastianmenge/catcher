@@ -2,12 +2,16 @@ module Api
   class GroupsController < BaseController
 
     def index
-      @groups = Group.find(params[:ids])
+      if params[:name]
+        @groups = Group.where(name: params[:name]).first
+      else
+        @groups = Group.find(params[:ids])
+      end
       render json: @groups
     end
 
     def show
-      @group = current_user.groups.find(params[:id])
+      @group = Group.find(params[:id])
       render json: @group
     end
 

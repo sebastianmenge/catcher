@@ -18,6 +18,8 @@ gem "mongoid", "~> 3.0.0"
 gem 'omniauth-facebook'
 gem 'nokogiri'
 gem "active_model_serializers"
+gem "pismo", "~> 0.7.4"
+gem 'metainspector'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
