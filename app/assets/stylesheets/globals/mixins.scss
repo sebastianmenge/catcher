@@ -4,10 +4,11 @@
   background: linear-gradient(top,  $start,  $end);
 }
 
-@mixin animate($property: opacity, $time: 0.3s, $function: ease-in-out) {
-  @include transition-property($property);
-  @include transition-duration($time);
-  @include transition-timing-function($function);
+@mixin transition($property: opacity, $time: 0.3s, $function: ease-in-out, $delay: 0) {
+  transition: $property $time $function $delay;
+  -webkit-transition: $property $time $function $delay;
+  -moz-transition: $property $time $function $delay;
+  -o-transition: $property $time $function $delay;
 }
 
 

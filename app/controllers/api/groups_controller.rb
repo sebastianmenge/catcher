@@ -14,6 +14,5 @@ module Api
       @group = Group.find(params[:id])
       render json: @group
     end
-
   end
 end

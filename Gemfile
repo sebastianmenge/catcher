@@ -14,6 +14,7 @@ end
 
 gem 'jquery-rails'
 gem 'ember-rails'
+gem 'ember-source', '1.0.0.rc6.2'
 gem "mongoid", "~> 3.0.0"
 gem 'omniauth-facebook'
 gem 'nokogiri'

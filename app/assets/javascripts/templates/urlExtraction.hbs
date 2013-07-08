@@ -1,0 +1,23 @@
+<div {{bindAttr class=":add-link :icon-link"}}>
+  {{view App.AddLinkFieldView placeholder="Paste a link you wanna save..." valueBinding=view.url}}
+  <div class="clear"></div>
+</div>
+<div {{bindAttr class=":link-preview isPasted" }}>
+  <div class="link-element">
+    <img class="page-img" {{bindAttr src="image_url"}}>
+    <div class="link-content">
+      <h2>{{title}}</h2>
+      <img class="favicon" {{bindAttr src="favicon_url"}}>
+      <a {{bindAttr href="url" }} class="url" target="_blank">
+        {{url}}
+      </a>
+      <p class="description">{{description}}</p>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="save-cancel">
+    <button {{action save}} class="btn btn-primary">Save</button>
+    <button {{action resetPreview}} class="btn btn-secondary">Cancel</button>
+    <div class="clear"></div>
+  </div>
+</div>

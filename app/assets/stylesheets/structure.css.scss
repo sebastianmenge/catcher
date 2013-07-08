@@ -12,7 +12,7 @@ html, body {
 }
 
 body {
-  background: image-url('body_bg.gif');
+  background: image-url('body_bg_3.jpg');
   font-family: 'source-sans-pro';
   font-weight: 400;
 }
@@ -30,8 +30,10 @@ nav, footer {
 }
 
 nav.main-nav {
+  position: relative;
   background:#333;
   height: 45px;
+  z-index: 100;
   .content {
     padding: 10px 0 0;
   }
@@ -41,4 +43,12 @@ nav.main-nav {
     width: 100px;
     height: 28px;
   }
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }

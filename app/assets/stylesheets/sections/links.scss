@@ -7,29 +7,68 @@
 
 .add-search-section {
   position: relative;
-  margin-bottom: 50px;
   min-width: 1100px;
+  min-height: 45px;
+  margin-bottom: 50px;
   .add-search-link {
+    position: relative;
     margin: auto;
-    padding: 6px;
     width: 700px;
-    background:#c7c7c7;
-    @include border-radius(bottom, 9px);
     .add-link {
-      width: 100%;
-      height: 37px;
-      border: none;
-      outline: none;
-      @include border-radius(all, 6px);
-      font-size: 19px;
-      padding: 3px 13px 0 13px;
+      position: relative;
+      height: 42px;
+      z-index: 2;
+      &:before {
+        top: 9px;
+        right: 7px;
+        color: rgb(179, 179, 179);
+        z-index: 1;
+        position: absolute;
+        font-size: 25px;
+      }
+      &.valid-link:before {
+        color: #54C473;
+      }
+      &.invalid-link:before {
+        color: red;
+      }
+      input {
+        position: absolute;
+        width: 100%;
+        height: 42px;
+        border: none;
+        outline: none;
+        @include border-radius(bottom, 3px);
+        font-size: 17px;
+        padding: 3px 42px 0 20px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, .1);
+      }
+    }
+    .search-links {
+      display: none;
+      @extend .add-link;
     }
   }
   .link-preview {
-    padding: 18px 25px;
-    margin-top: 20px;
+    position: relative;
+    margin-top: -200px;
     background:white;
-    @include border-radius(all, 9px);
+    @include border-radius(all, 3px);
+    @include transition(margin-top, 0.4s, ease-in-out, 0.4s);
+    &.is-pasted {
+      margin-top: 1px;
+    }
+    .link-element{
+      padding: 19px 45px 19px 25px;
+      box-shadow: none;
+      p {
+        width: 100%;
+      }
+    }
+  }
+  .save-cancel {
+    border-top: 1px dashed #cacaca;
+    padding: 11px 18px;
   }
 }
 
@@ -69,48 +108,94 @@
     }
   }
   .links {
-    div:first-child {
-      @include border-radius(top, 5px);
-    }
-    div:last-child {
-      @include border-radius(bottom, 5px);
-    }
+    // div:first-child {
+    //   @include border-radius(top, 2px);
+    // }
+    // div:last-child {
+    //   @include border-radius(bottom, 2px);
+    // }
     margin: auto;
   }
-  .link-element {
-    background:white;
-    padding: 19px 21px;
-    margin-bottom: 5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-    .page-img {
-      max-width: 70px;
-      @include border-radius(all, 3px);
-      float: left;
+}
+.link-element {
+  position: relative;
+  @include border-radius(all, 2px);
+  background:white;
+  padding: 19px 21px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  .page-img {
+    max-width: 70px;
+    @include border-radius(all, 3px);
+    float: left;
+  }
+  .link-content {
+    margin-left: 90px;
+    h2 {
+      margin: 0;
+      color: #3D3D3D;
+      font-size: 17px;
+      margin-bottom: 2px;
+      line-height: 1.3em;
     }
-    .link-content {
-      margin-left: 90px;
-      h2 {
-        margin: 0;
-        color: #3D3D3D;
-        font-size: 20px;
-        margin-bottom: 3px;
-        line-height: 1.3em;
+    .favicon {
+      margin-top: 3px;
+      width: 12px;
+      border-radius: 1px;
+    }
+    .url {
+      font-weight: 400;
+      color: #3D6BAF;
+      font-size: 13px;
+      vertical-align: top;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
       }
-      .favicon {
-        margin-top: 1px;
+    }
+    .description {
+      font-family: 'ff-tisa-web-pro';
+      font-weight: 400;
+      width: 70%;
+      margin: 6px 0 0;
+      font-size: 13px;
+    }
+  }
+  .options {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    min-width: 65px;
+    min-height: 20px;
+    cursor: pointer;
+    .icon-clock:before, .icon-menu:before, .icon-trash:before {
+      color: #a9a9a9;
+      font-size: 17px;
+      @include transition(color, 0.15s);
+    }
+    .reminder {
+      &:hover {
+        &.icon-clock:before {
+          color: #303030;
+        }
       }
-      .url {
-        font-weight: 400;
-        color: #3D6BAF;
-        font-size: 13px;
-        vertical-align: top;
+    }
+    .move-to {
+      &.icon-menu:before {
+        font-size: 24px;
+        line-height: 10px;
       }
-      .description {
-        font-family: 'ff-tisa-web-pro';
-        font-weight: 400;
-        width: 70%;
-        margin: 6px 0 0;
-        font-size: 13px;
+      &:hover {
+        &.icon-menu:before {
+          color: #303030;
+        }
+      }
+    }
+    .delete {
+      &:hover {
+        &.icon-trash:before {
+          color: #DA2C2C;
+        }
       }
     }
   }

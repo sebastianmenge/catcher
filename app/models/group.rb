@@ -3,7 +3,7 @@ class Group
   include Mongoid::Timestamps
 
   belongs_to :context
-  has_many :links, dependent: :destroy
+  embeds_many :links
 
   field :name, type: String
   field :is_public, type: Boolean, default: false

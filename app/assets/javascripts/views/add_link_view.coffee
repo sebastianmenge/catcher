@@ -1,16 +1,20 @@
-App.AddSearchLinkView = Ember.View.extend
-  classNames: ['add-search-link']
-  templateName: 'groups/add_search_link_field'
-
 App.AddLinkFieldView = Ember.TextField.extend
   didInsertElement: ->
-    @.$().bind 'paste', (e)->
-      setTimeout ->
-        url = e.target.value.split(".").join(" ")
-        url = encodeURIComponent(url)
+    @.$().bind 'paste', (e)=>
+      setTimeout =>
+        url = e.target.value
+        safeUrl = url.split(".").join(" ")
+        encodedUrl = encodeURIComponent(safeUrl)
         if e.type == 'paste'
-          ctrl = App.__container__.lookup('controller:urlExtraction')
-          ctrl.getUrlData(url)
+          regex = new RegExp("/((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/")
+          test = regex.test(url)
+          ctrl = @get('controller')
+          if test
+            ctrl.getUrlData(encodedUrl)
+            ctrl.set('isPasted', true)
+          else
+            alert "Whoops! Seems not be a Url"
+            ctrl.set('isPasted', false) if ctrl.get('isPasted') == true
         else
           # do something here
       ,0

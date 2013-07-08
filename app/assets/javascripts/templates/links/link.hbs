@@ -2,7 +2,12 @@
 <div class="link-content">
   <h2>{{title}}</h2>
   <img class="favicon" {{bindAttr src="favicon_url"}}>
-  <span class="url">{{rootUrl}}</span>
-  <p class="description">{{description}}</p>
+  <a {{bindAttr href="url"}} class="url" target="_blank">{{rootUrl}}</a>
+  <p class="description">{{shortDescription}}</p>
+  <div class="options">
+    <span {{action deleteLink}} class="reminder icon-clock"></span>
+    <span class="move-to icon-menu"></span>
+    <span class="delete icon-trash"></span>
+  </div>
   <div class="clear"></div>
 </div>

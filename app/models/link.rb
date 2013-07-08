@@ -1,7 +1,7 @@
 class Link
   include Mongoid::Document
   include Mongoid::Timestamps
-  belongs_to :group
+  embedded_in :group
 
   field :url, type: String
   field :title, type: String

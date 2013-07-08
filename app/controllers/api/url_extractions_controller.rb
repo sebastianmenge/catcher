@@ -5,18 +5,19 @@ module Api
     require 'open-uri'
     require 'uri'
     require 'pismo'
+    require 'cgi'
 
     def show
       url = params[:id].split(" ").join(".")
-      # doc = Nokogiri::HTML(open(url))
+      doc = Nokogiri::HTML(open(url))
       # doc = Pismo::Document.new(url)
-      doc = MetaInspector.new(url)
+      # doc = MetaInspector.new(url)
       render json: { url_extraction: {
-        title: doc.title,
-        image: doc.image,
-        description: doc.description,
-        url: doc.host,
-        favicon: favicon(url)
+        title: title(doc),
+        image_url: image(doc, url),
+        description: desc(doc),
+        url: url,
+        favicon_url: favicon(url)
         }
       }
     end
@@ -37,7 +38,7 @@ module Api
 
     def image(doc, url)
       fb_og = parse_prop(doc, "//meta[@property='og:image']/@content")
-      tag = parse_prop(doc, '//img/@src').sample(1)
+      tag = parse_prop(doc, '//img/@src').last
       img_url = build_img_url(url, tag) if tag.present?
       fb_og.first.present? ? fb_og.first : img_url
     end
@@ -50,7 +51,8 @@ module Api
     def desc(doc)
       fb_og = parse_prop(doc, "//meta[@property='og:description']/@content")
       tag = parse_prop(doc, '//p/text()')
-      fb_og.first.present? ? fb_og.first : tag.first
+      tag = tag[0..3].join(" ")
+      fb_og.first.present? ? fb_og.first : CGI.unescapeHTML(tag)
     end
 
     def favicon(url)
