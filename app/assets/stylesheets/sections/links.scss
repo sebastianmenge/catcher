@@ -155,8 +155,8 @@
   position: relative;
   @include border-radius(all, 2px);
   background:white;
-  padding: 19px 24px;
-  margin-bottom: 1px;
+  padding: 22px 23px;
+  margin-bottom: 2px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
   &.dragStart {
     outline: 2px dashed #bcbcbc;
@@ -172,10 +172,11 @@
     margin-left: 73px;
     h2 {
       margin: 0;
-      color: #3D3D3D;
-      font-size: 17px;
+      color: black;
+      font-size: 18px;
       margin-bottom: 2px;
       line-height: 1.3em;
+      font-weight: 400;
     }
     .favicon {
       margin-top: 3px;
@@ -193,11 +194,10 @@
       }
     }
     .description {
-      font-family: 'ff-tisa-web-pro';
-      font-weight: 400;
       width: 70%;
       margin: 6px 0 0;
       font-size: 13px;
+      color: #535353;
     }
   }
   .options {
