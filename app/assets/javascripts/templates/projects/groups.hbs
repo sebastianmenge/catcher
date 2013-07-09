@@ -1,0 +1,19 @@
+<section class="links-section">
+  <div class="content">
+    <div class="links-wrapper">
+
+      <ul class="groups">
+        <li class="groups-header"><p>Groups</p></li>
+        {{#each group in controller.groups }}
+          <li>{{render 'groupList' group}}</li>
+        {{/each}}
+        <li class="new-group">
+          <form class="form-inline" {{action createGroup on="submit"}}>
+            {{input value=groupname type="text" placeholder="+ new Group"}}
+          </form>
+        </li>
+      </ul>
+      {{outlet}}
+    </div>
+  </div>
+</section>
