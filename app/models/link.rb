@@ -8,4 +8,7 @@ class Link
   field :description, type: String
   field :image_url, type: String
   field :favicon_url, type: String
+
+
+  validates :url, :title, :favicon_url, presence: true
 end

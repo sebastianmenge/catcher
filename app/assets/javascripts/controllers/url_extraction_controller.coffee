@@ -1,5 +1,5 @@
 App.UrlExtractionController = Ember.ObjectController.extend
-  needs: ['contextsGroups', 'groupsLinks']
+  needs: ['projectsGroups', 'groupsLinks']
   isPasted: false
   dataReturned: false
   getUrlData: (url)->
@@ -16,10 +16,11 @@ App.UrlExtractionController = Ember.ObjectController.extend
     ), 700)
 
   save: ->
-    contextId =
-      context_id: @get('controllers.contextsGroups.content.id')
+    projectId =
+      project_id: @get('controllers.projectsGroups.content.id')
+      group_id: @get('controllers.groupsLinks.content.id')
     urlDetails = @get('content._data.attributes')
-    result = $.extend({}, contextId, urlDetails);
+    result = $.extend({}, projectId, urlDetails);
 
     @transaction = @get('store').transaction();
     link = @transaction.createRecord App.Link,
@@ -32,4 +33,4 @@ App.UrlExtractionController = Ember.ObjectController.extend
     @transaction = null
 
     link.on 'didCreate', (e)=>
-      _.delay((=>@resetPreview()), 1100)
+      _.delay((=>@resetPreview()), 600)

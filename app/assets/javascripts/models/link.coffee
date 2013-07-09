@@ -5,7 +5,7 @@ App.Link = DS.Model.extend
   favicon_url:    DS.attr('string')
   description:    DS.attr('string')
   group:          DS.belongsTo('App.Group')
-  context_id:     DS.attr('string')
+  project_id:     DS.attr('string')
   created_at:     DS.attr('date')
   updated_at:     DS.attr('date')
 
@@ -26,5 +26,5 @@ App.Link = DS.Model.extend
   shortDescription: (->
     desc = @get('description')
     if desc != undefined || null
-      "#{desc.substring(0, 130)}..."
+      "#{desc.substring(0, 100)}..."
     ).property('description')

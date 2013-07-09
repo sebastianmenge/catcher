@@ -1,4 +1,4 @@
-App.ContextsGroupsIndexController = Ember.ObjectController.extend()
+App.ProjectsGroupsIndexController = Ember.ObjectController.extend()
 
 App.GroupsLinksController = Ember.ObjectController.extend
   links: (->

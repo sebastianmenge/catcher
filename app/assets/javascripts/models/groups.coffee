@@ -4,7 +4,7 @@ App.Group = DS.Model.extend
   created_at: DS.attr('date')
   updated_at: DS.attr('date')
 
-  context:    DS.belongsTo('App.Context')
+  project:    DS.belongsTo('App.Project')
   links:      DS.hasMany('App.Link')
 
   created: (->

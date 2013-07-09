@@ -1,10 +1,10 @@
-App.ContextsView = Ember.View.extend
+App.ProjectsView = Ember.View.extend
   layoutName: 'layouts/application_layout'
-  templateName: 'contexts/index'
+  templateName: 'projects/index'
 
 App.GroupsView = Ember.View.extend
   layoutName: 'layouts/application_layout'
-  templateName: 'contexts/groups'
+  templateName: 'projects/groups'
 
 App.LinksView = Ember.View.extend
-  templateName: 'contexts/links'
+  templateName: 'projects/links'

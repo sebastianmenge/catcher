@@ -5,7 +5,7 @@ Catcher::Application.routes.draw do
     match '/logout' => 'sessions#destroy'
     resource  :sessions, only: [:create, :destroy]
     resources :users
-    resources :contexts
+    resources :projects
     resources :groups
     resources :links
 

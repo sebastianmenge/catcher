@@ -1,11 +1,11 @@
-App.ContextsRoute = Ember.Route.extend
+App.ProjectRoute = Ember.Route.extend
   model: ->
-    App.Context.find()
+    App.Project.find()
 
-App.ContextsIndexRoute = Ember.Route.extend
+App.ProjectsIndexRoute = Ember.Route.extend
   model: ->
-    App.Context.find({})
+    App.Project.find({})
   redirect: (model) ->
-    context = model.get('firstObject')
+    project = model.get('firstObject')
     group = model.get('firstObject.groups.firstObject')
-    @replaceWith('groups.links', context, group)
+    @replaceWith('groups.links', project, group)
