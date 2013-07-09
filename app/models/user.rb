@@ -1,7 +1,8 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
-  has_many :projects
+
+  after_create :create_initial_content
 
   field :first_name, type: String
   field :last_name, type: String
@@ -17,11 +18,20 @@ class User
   validates_uniqueness_of :email
   validates_presence_of :email
 
+  has_many :projects, dependent: :destroy
+
   def self.create_user(data)
     User.create(data)
   end
 
   def self.find_by_facebook_uid(uid)
     User.where(facebook_uid: uid).first
+  end
+
+  private
+
+  def create_initial_content
+    Project.create_initial_for_user(self)
+    Group.create_initial_for_user(self)
   end
 end

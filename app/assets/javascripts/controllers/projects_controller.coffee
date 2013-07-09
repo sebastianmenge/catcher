@@ -29,16 +29,9 @@ App.ProjectsGroupsController = Ember.ObjectController.extend
     @transaction = null
 
     group.on 'didCreate', (e)=>
-      console.log e
       @resetField()
       project = @get('content')
       @replaceRoute('groups.links', project, e)
-
-    group.on 'becameInvalid', (e)=>
-      alert "Something went wrong here."
-
-    group.on 'becameError', (e)=>
-      alert "Something went wrong here."
 
   resetField: ->
     @setProperties({groupname: ""})
